@@ -43,12 +43,9 @@ export class RuneLiteAreasConverter extends OSBotAreasConverter {
         }
     }
     
-    toJavaSingle(area) {
-        var start = area.startPosition.x < area.endPosition.x ? area.startPosition.x : area.endPosition.x;
-        var end = area.startPosition.y < area.endPosition.y ? area.startPosition.y : area.endPosition.y;
-
-        var startTile = `\"start\": [${start}, 0, -1],\n`;
-        var endTile = `\"end\": [${end}, 0, -1];`
+    toJavaSingle(area) {        
+        var startTile = `\"start\": [${area.startPosition.x}, ${area.startPosition.y}, -1],\n`;
+        var endTile = `\"end\": [${area.endPosition.x}, ${area.endPosition.y}, -1];`
         return `${startTile + endTile}`;
     }
 }
