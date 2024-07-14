@@ -34,7 +34,7 @@ var RegionLabelsCanvas = CanvasLayer.extend({
                 var canvasPoint = info.layer._map.latLngToContainerPoint(latLng);
                 var id = region.id;
                 var mx = id >> 8;
-                var my = region & 0xff;
+                var my = id & 0xff;
 
                 ctx.fillText(`${mx}, ${my}`, canvasPoint.x, canvasPoint.y);
             }
