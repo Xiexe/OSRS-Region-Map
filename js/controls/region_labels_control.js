@@ -36,7 +36,7 @@ var RegionLabelsCanvas = CanvasLayer.extend({
                 var mx = id >> 8;
                 var my = id & 0xff;
 
-                ctx.fillText(`${mx}, ${my}`, canvasPoint.x, canvasPoint.y);
+                ctx.fillText(`${mx}, ${my}\n${id}`, canvasPoint.x, canvasPoint.y);
             }
         }
     }
