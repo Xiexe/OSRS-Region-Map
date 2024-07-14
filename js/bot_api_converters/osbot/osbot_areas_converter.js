@@ -45,6 +45,7 @@ export class OSBotAreasConverter extends OSBotConverter {
     
     toRaw(areas) {
         var output = "";
+        var count = areas.areas.length;
         for (var i = 0; i < areas.areas.length; i++) {
             var area = areas.areas[i];
             
@@ -56,7 +57,9 @@ export class OSBotAreasConverter extends OSBotConverter {
             
             var start = `\"start\": [${startX}, ${startY}, -1],`
             var end = `\"end\": [${endX}, ${endY}, -1]`
-            output += `{\n${start}\n` + `${end}\n}\n`;
+
+            var appendComma = (count > 1) && (i != count-1) ? "," : "";
+            output += `{\n${start}\n` + `${end}\n}${appendComma}\n`;
         }
         return output;
     }
