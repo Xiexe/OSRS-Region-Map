@@ -48,7 +48,7 @@ export class OSBotAreasConverter extends OSBotConverter {
         for (var i = 0; i < areas.areas.length; i++) {
             var start = `\"start\": [${areas.areas[i].startPosition.x}, ${areas.areas[i].startPosition.y}, -1];`
             var end = `\"end\": [${areas.areas[i].endPosition.x}, ${areas.areas[i].endPosition.y}, -1];`
-            output += `${start}\n` + `${end}`;
+            output += `{\n${start}\n` + `${end}\n}\n`;
         }
         return output;
     }
