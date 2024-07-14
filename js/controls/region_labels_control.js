@@ -32,8 +32,11 @@ var RegionLabelsCanvas = CanvasLayer.extend({
                 var region = Region.fromPosition(position);
 
                 var canvasPoint = info.layer._map.latLngToContainerPoint(latLng);
+                int id = region.id;
+                int mx = id >> 8;
+                int my = region & 0xff;
 
-                ctx.fillText(region.id.toString(), canvasPoint.x, canvasPoint.y);
+                ctx.fillText(`${mx}, ${my}`, canvasPoint.x, canvasPoint.y);
             }
         }
     }
