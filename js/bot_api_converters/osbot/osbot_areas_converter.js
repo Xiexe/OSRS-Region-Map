@@ -46,8 +46,16 @@ export class OSBotAreasConverter extends OSBotConverter {
     toRaw(areas) {
         var output = "";
         for (var i = 0; i < areas.areas.length; i++) {
-            var start = `\"start\": [${areas.areas[i].startPosition.x}, ${areas.areas[i].startPosition.y}, -1],`
-            var end = `\"end\": [${areas.areas[i].endPosition.x}, ${areas.areas[i].endPosition.y}, -1]`
+            var area = areas.areas[i];
+            
+            var startX = area.startPosition.x < area.endPosition.x ? area.startPosition.x : area.endPosition.x;
+            var startY = area.startPosition.y < area.endPosition.y ? area.startPosition.y : area.endPosition.y;
+
+            var endX = area.endPosition.x > area.startPosition.x ? area.endPosition.x : area.startPosition.x;
+            var endY = area.endPosition.y > area.startPosition.y ? area.endPosition.y : area.startPosition.y;
+            
+            var start = `\"start\": [${startX}, ${startY}, -1],`
+            var end = `\"end\": [${endX}, ${endY}, -1]`
             output += `{\n${start}\n` + `${end}\n}\n`;
         }
         return output;
